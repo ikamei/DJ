@@ -116,7 +116,7 @@ public class NotesController : MonoBehaviour
         {
             m_middle_disappear_note_indices.Add( new List<int>() );
         }
-
+        
         for( int j=0; j<m_middle_notes.Count; ++j )
         {
             if( m_middle_notes[j].m_disappear_beat_index > 0 )
@@ -501,21 +501,29 @@ public class NotesController : MonoBehaviour
         note.m_gameobject = go;
 
         MyNoteMotor motor = go.AddComponent<MyNoteMotor>();
-        motor.set_param( note, start_position, this);
+        motor.set_param( note, start_position, m_velocity);
         motor.index = note.m_appear_beat_index;
     }
 }
 
+public enum NoteType
+{
+    NoteTypeSingle,
+    NoteTypePush,
+    NoteTypeRelease,
+    NoteTypeKePressed,
+}
 
 public class Note
 {
     public int m_appear_beat_index = -1;
     public NoteSide m_side;
- 
+    public NoteType m_note_type;
+    public int m_length = 0;
+
     public int m_disappear_beat_index = -1;
     public System.DateTime m_appear_time;
     public System.DateTime m_disappear_time;
     public bool m_visible = false;
     public GameObject m_gameobject = null;
-
 }

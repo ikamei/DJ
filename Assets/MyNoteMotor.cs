@@ -15,23 +15,25 @@ using UnityEngine.SceneManagement;
 public class MyNoteMotor : MonoBehaviour
 {
     public int index = -1;
-    Note m_note;
-    NotesController m_notes_controller = null;
+    Note m_note = null;
+    //NotesController m_notes_controller = null;
     Vector3 m_start_position = new Vector3(0,0,0);
+    Vector3 m_velocity;
 
-    public void set_param(Note note, Vector3 start_position, NotesController notes_controller)
+    public void set_param(Note note, Vector3 start_position, Vector3 velocity)
     {
         m_note = note;
         m_start_position = start_position;
-        m_notes_controller = notes_controller;
+        //m_notes_controller = notes_controller;
+        m_velocity = velocity;
     }
 
     void Update()
     {
-        if( null!=m_notes_controller )
+        if( null!=m_note )
         {
-            float deltaT = (float)((System.DateTime.Now - m_note.m_appear_time).TotalMilliseconds);
-            gameObject.transform.localPosition = m_start_position + m_notes_controller.Velocity * deltaT;
+            float deltaT = (float)((System.DateTime.Now - m_note.m_appear_time).TotalMilliseconds) / 1000.0f;
+            gameObject.transform.localPosition = m_start_position + m_velocity * deltaT;
             //Debug.Log( "deltaT = " + deltaT + ", v = " + m_notes_controller.Velocity + ", m_start_position = " + m_start_position);
         }
     }
