@@ -156,8 +156,11 @@ public class NewNotesController : MonoBehaviour
                 // {
                 //     Debug.Log( note.m_gameobject.name );
                 // }
-                Destroy( note.m_gameobject );
-                note.m_gameobject = null;
+                if( null != note.m_gameobject )
+                {
+                    Destroy( note.m_gameobject );
+                    note.m_gameobject = null;
+                }
             }
         }
     }
@@ -169,9 +172,10 @@ public class NewNotesController : MonoBehaviour
 
         System.TimeSpan span = m_current_time - m_start_time;
         GameObject go = new GameObject();
+        go.layer = MyConst.LAYER_NOTE;
+
         // go.name = "character";
-        // go.tag = "Player";
-        // go.layer = MyConsts.LAYER_PLAYER;
+        go.tag = "Note";
         SpriteRenderer renderer = go.AddComponent<SpriteRenderer>();
         if( NoteType.NoteTypeKePressed == note.m_note_type )
         {
@@ -208,6 +212,9 @@ public class NewNotesController : MonoBehaviour
         MyNoteMotor motor = go.AddComponent<MyNoteMotor>();
         motor.set_param( note, start_position, m_velocity);
         motor.index = note.m_appear_beat_index;
+
+        MyNote mynote = go.AddComponent<MyNote>();
+        mynote.m_note = note;
     }
 }
 

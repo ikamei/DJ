@@ -15,7 +15,7 @@ using UnityEngine.SceneManagement;
 public class MyNoteMotor : MonoBehaviour
 {
     public int index = -1;
-    Note m_note = null;
+    public Note m_note = null;
     //NotesController m_notes_controller = null;
     Vector3 m_start_position = new Vector3(0,0,0);
     Vector3 m_velocity;
