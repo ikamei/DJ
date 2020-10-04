@@ -50,10 +50,10 @@ public class NewNotesController : MonoBehaviour
         m_notes_generator = new NotesGenerator( m_beats_per_second, m_span_of_disappear_seconds );
     }
 
-    void Awake()
-    {
-        set_start( true );
-    }
+    // void Awake()
+    // {
+    //     set_start( true );
+    // }
 
     public void set_start( bool is_start )
     {
