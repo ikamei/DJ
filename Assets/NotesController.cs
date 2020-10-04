@@ -41,7 +41,7 @@ public class NotesController : MonoBehaviour
     // 
     public int m_beats_per_second = 1;
     public int m_span_of_beat_count = 32;
-
+    public float m_track_length = 6;
     Vector3 m_velocity = new Vector3(0,-1,0);
     public Vector3 Velocity
     {
@@ -64,7 +64,7 @@ public class NotesController : MonoBehaviour
 
         double t = 1000.0 * m_span_of_beat_count / m_beats_per_second;
         //Debug.Log( "generate_notes : " + m_left_notes.Count + ", m_left_appear_note_indices.Count = " + m_left_appear_note_indices.Count + ", t = " + t );
-        m_velocity = new Vector3(0, (float)(-10 / t),0);
+        m_velocity = new Vector3(0, (float)(-m_track_length / t),0);
 
         // for( int j=0; j<m_left_notes.Count; ++j )
         // {
@@ -403,14 +403,14 @@ public class NotesController : MonoBehaviour
         }
         //Debug.Log( "span.TotalMilliseconds = " + span.TotalMilliseconds + ", current_beat_index = " + current_beat_index );
         bool isok = check_appear_note( current_beat_index, ref m_left_notes, m_left_appear_note_indices, m_left_start_position, m_current_time );
-        if( isok )
-        {
-            Debug.Log( "====================" );
-            for( int j=0; j<m_left_notes.Count; ++j )
-            {
-                Debug.Log( "j : " + j + " : " + m_left_notes[j].m_gameobject );
-            }
-        }
+        // if( isok )
+        // {
+        //     Debug.Log( "====================" );
+        //     for( int j=0; j<m_left_notes.Count; ++j )
+        //     {
+        //         Debug.Log( "j : " + j + " : " + m_left_notes[j].m_gameobject );
+        //     }
+        // }
         // check_appear_note( current_beat_index, ref m_middle_notes, m_middle_appear_note_indices, m_middle_start_position, m_current_time );
         // check_appear_note( current_beat_index, ref m_right_notes, m_right_appear_note_indices, m_right_start_position, m_current_time );
 
@@ -457,10 +457,10 @@ public class NotesController : MonoBehaviour
         for( int j=0; j<disappear_indices.Count; ++j )
         {
             int disappear_index = disappear_indices[j];
-            if( disappear_index>=0 )
-            {
-                Debug.Log( "check_disappear_note : current_beat_index=" + current_beat_index + ", disappear_index=" + disappear_index + ", visible=" + notes[disappear_index].m_visible + ", go : " + notes[disappear_index].m_gameobject);
-            }
+            // if( disappear_index>=0 )
+            // {
+            //     Debug.Log( "check_disappear_note : current_beat_index=" + current_beat_index + ", disappear_index=" + disappear_index + ", visible=" + notes[disappear_index].m_visible + ", go : " + notes[disappear_index].m_gameobject);
+            // }
             if( disappear_index>=0 && notes[disappear_index].m_visible )
             {
                 Note note = notes[disappear_index];
@@ -487,6 +487,14 @@ public class NotesController : MonoBehaviour
         // renderer.sortingLayerName = MyConsts.SORTING_LAYER_FOREGROUND_NAME;
         go.transform.localPosition = start_position;
         go.transform.localScale = m_sprite_scale;
+
+        // rigid body
+        Rigidbody2D rigidbody = go.AddComponent<Rigidbody2D>();
+        rigidbody.mass = 0;
+        rigidbody.gravityScale = 0;
+        rigidbody.freezeRotation = true;
+        BoxCollider2D collider = go.AddComponent<BoxCollider2D>();
+        //collider.isTrigger = true;
 
         note.m_visible = true;
         note.m_appear_time = current_time;
