@@ -89,7 +89,7 @@ public class NotesGenerator// : MonoBehaviour
     {
         int offset = (int)(m_beats_per_second * 1.9 + 0.5);
         //offset = 0;
-        Debug.Log( "offset = " + offset );
+        // Debug.Log( "offset = " + offset );
         for( int j=0; j<m_left_notes.Count-offset; ++j )
         {
             m_left_appear_note_indices.Add( m_left_notes[j + offset].m_appear_beat_index  );
