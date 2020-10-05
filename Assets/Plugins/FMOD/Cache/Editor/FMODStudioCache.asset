@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4541729552261888683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/20201002 track A r3
+  m_EditorClassIdentifier: 
+  Path: event:/20201002 track A r3
+  guid: c5b6c2740e8858488085c3805c1959af
+  Banks:
+  - {fileID: 4355577451967261575}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 118804
 --- !u!114 &-4440829910518093608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14,11 +37,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: DJ/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637374542250000000
+  lastModified: 637374853650000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 838
+    Value: 914
   Exists: 1
 --- !u!114 &-1010690799639447470
 MonoBehaviour:
@@ -35,7 +58,7 @@ MonoBehaviour:
   Path: event:/20201002 track B r1
   guid: de750640c40d9f429b47a1b7b306e4ca
   Banks:
-  - {fileID: 3610511282662981712}
+  - {fileID: 4355577451967261575}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -57,18 +80,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -4440829910518093608}
-  - {fileID: 3610511282662981712}
+  - {fileID: 4355577451967261575}
   EditorEvents:
   - {fileID: 7550235619640960106}
   - {fileID: 1964430567065112051}
   - {fileID: -1010690799639447470}
+  - {fileID: -4541729552261888683}
+  - {fileID: 1780678980620712311}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 3610511282662981712}
+  - {fileID: 4355577451967261575}
   StringsBanks:
   - {fileID: -4440829910518093608}
-  stringsBankWriteTime: 637374542250000000
+  stringsBankWriteTime: 637374853650000000
   cacheVersion: 3
+--- !u!114 &1780678980620712311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/20201002 track B r3
+  m_EditorClassIdentifier: 
+  Path: event:/20201002 track B r3
+  guid: f017693b8b77d044bd09dcbbd6a4471c
+  Banks:
+  - {fileID: 4355577451967261575}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 105195
 --- !u!114 &1964430567065112051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,7 +132,7 @@ MonoBehaviour:
   Path: event:/20201002 track A r2
   guid: 3976a7c3346758489ab0a73705c1233a
   Banks:
-  - {fileID: 3610511282662981712}
+  - {fileID: 4355577451967261575}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -109,6 +157,24 @@ MonoBehaviour:
   lastModified: 637374542250000000
   LoadResult: 0
   FileSizes: []
+  Exists: 0
+--- !u!114 &4355577451967261575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: DJ/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637374853630000000
+  LoadResult: 0
+  FileSizes: []
   Exists: 1
 --- !u!114 &7550235619640960106
 MonoBehaviour:
@@ -125,7 +191,7 @@ MonoBehaviour:
   Path: event:/20201002 track B r2 DJ
   guid: 27504123bc07a74eb0f6b8949b4e47df
   Banks:
-  - {fileID: 3610511282662981712}
+  - {fileID: 4355577451967261575}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1

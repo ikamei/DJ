@@ -15,8 +15,8 @@ using UnityEngine.SceneManagement;
 
 public class NotesGenerator// : MonoBehaviour
 {
-    public int m_beats_per_second = 1;
-    public int m_span_of_disappear_seconds = 2;
+    public float m_beats_per_second = 1;
+    public float m_span_of_disappear_seconds = 2;
     int m_span_of_disappear_beat_count;
 
     public List<Note> m_left_notes = new List<Note>();
@@ -28,12 +28,12 @@ public class NotesGenerator// : MonoBehaviour
     public List<List<int>> m_left_disappear_note_indices = new List<List<int>>();
     public List<List<int>> m_right_disappear_note_indices = new List<List<int>>();
 
-    public NotesGenerator( int beats_per_second, int span_of_disappear_seconds )
+    public NotesGenerator( float beats_per_second, float span_of_disappear_seconds )
     {
         m_beats_per_second = beats_per_second;
         m_span_of_disappear_seconds = span_of_disappear_seconds;
 
-        m_span_of_disappear_beat_count = m_beats_per_second * m_span_of_disappear_seconds;
+        m_span_of_disappear_beat_count = (int)(m_beats_per_second * m_span_of_disappear_seconds + 0.5);
         // Debug.Log( "m_span_of_disappear_beat_count = " + m_span_of_disappear_beat_count );
         generate_notes();
         fix_disappear_index();
@@ -87,17 +87,21 @@ public class NotesGenerator// : MonoBehaviour
 
     void generate_left_appear_notes()
     {
-        for( int j=0; j<m_left_notes.Count; ++j )
+        int offset = (int)(m_beats_per_second * 1.9 + 0.5);
+        //offset = 0;
+        Debug.Log( "offset = " + offset );
+        for( int j=0; j<m_left_notes.Count-offset; ++j )
         {
-            m_left_appear_note_indices.Add( m_left_notes[j].m_appear_beat_index );
+            m_left_appear_note_indices.Add( m_left_notes[j + offset].m_appear_beat_index  );
         }
     }
 
     void generate_right_appear_notes()
     {
-        for( int j=0; j<m_right_notes.Count; ++j )
+        int offset = (int)(m_beats_per_second * 1.9 + 0.5);
+        for( int j=0; j<m_right_notes.Count-offset; ++j )
         {
-            m_right_appear_note_indices.Add( m_right_notes[j].m_appear_beat_index );
+            m_right_appear_note_indices.Add( m_right_notes[j + offset].m_appear_beat_index );
         }
     }
 
@@ -136,7 +140,7 @@ public class NotesGenerator// : MonoBehaviour
 
     void generate_section_1()
     {
-        int offset = 64;
+        int offset = 64+32;
         // index, length, side
         int[] items = { 
             offset+0,   2, (int)(NoteSide.NoteSide_Left),
@@ -164,7 +168,7 @@ public class NotesGenerator// : MonoBehaviour
 
     void generate_section_2()
     {
-        int offset = 320;
+        int offset = 320+32;
         // index, length, side
         int[] items = { 
             offset+0,  2,  (int)(NoteSide.NoteSide_Right),
@@ -210,7 +214,7 @@ public class NotesGenerator// : MonoBehaviour
 
     void generate_section_3()
     {
-        int offset = 576;
+        int offset = 576+32;
         // index, length, side
         int[] items = { 
             offset+0,   2, (int)(NoteSide.NoteSide_Left),
@@ -241,7 +245,7 @@ public class NotesGenerator// : MonoBehaviour
 
     void generate_section_4()
     {
-        int offset = 704;
+        int offset = 704+32;
         // index, length, side
         int[] items = { 
             offset+0,   2,  (int)(NoteSide.NoteSide_Right),
@@ -274,7 +278,7 @@ public class NotesGenerator// : MonoBehaviour
 
     void generate_section_5()
     {
-        int offset = 832;
+        int offset = 832+32;
         // index, length, side
         int[] items = { 
             offset+0,  2, (int)(NoteSide.NoteSide_Left),
@@ -289,7 +293,7 @@ public class NotesGenerator// : MonoBehaviour
 
     void generate_section_6()
     {
-        int offset = 896;
+        int offset = 896+32;
         // index, length, side
         int[] items = { 
             offset+0,  2, (int)(NoteSide.NoteSide_Left),
@@ -304,7 +308,7 @@ public class NotesGenerator// : MonoBehaviour
 
     void generate_section_7()
     {
-        int offset = 960;
+        int offset = 960+32;
         // index, length, side
         int[] items = { 
             offset+0,  2, (int)(NoteSide.NoteSide_Left),
@@ -319,7 +323,7 @@ public class NotesGenerator// : MonoBehaviour
 
     void generate_section_8()
     {
-        int offset = 1024;
+        int offset = 1024+32;
         // index, length, side
         int[] items = { 
             offset+0,  2, (int)(NoteSide.NoteSide_Left),
@@ -334,7 +338,7 @@ public class NotesGenerator// : MonoBehaviour
 
     void generate_section_9()
     {
-        int offset = 1088;
+        int offset = 1088+32;
         // index, length, side
         int[] items = { 
             offset+0,   2,  (int)(NoteSide.NoteSide_Right),
@@ -465,7 +469,7 @@ public class NotesGenerator// : MonoBehaviour
     Note create_single_note( int index, int length, NoteSide side )
     {
         Note note = new Note();
-        note.m_appear_beat_index = index;
+        note.m_appear_beat_index = index;// - m_span_of_disappear_beat_count;
         if( index < 0 )
         {
             note.m_disappear_beat_index = -1;

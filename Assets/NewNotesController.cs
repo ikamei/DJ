@@ -28,8 +28,8 @@ public class NewNotesController : MonoBehaviour
     bool m_is_start = false;
 
     // 
-    public int m_beats_per_second = 1;
-    public int m_span_of_disappear_seconds = 2;
+    public float m_beats_per_second = 1;
+    public float m_span_of_disappear_seconds = 2;
     // public int m_span_of_beat_count = 32;
     // public float m_track_length = 6;
 
@@ -76,6 +76,7 @@ public class NewNotesController : MonoBehaviour
 
         // int current_beat_index = (int)(span.TotalMilliseconds * m_beats_per_second + 0.5);
         int current_beat_index = (int)(span.TotalSeconds * m_beats_per_second + 0.5);
+        // Debug.Log( "span.TotalSeconds = " + span.TotalSeconds);
         // Debug.Log( "current_beat_index = " + current_beat_index);
         if( current_beat_index >= m_notes_generator.m_left_notes.Count )
         {

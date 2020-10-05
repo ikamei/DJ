@@ -14,18 +14,14 @@ class MyGameController : MonoBehaviour
 {
     [FMODUnity.EventRef]
     public string PlayerStateEvent = "";
-    public NewNotesController m_notes_controller;
+    public NewNotesController m_notes_controller = null;
 
     // FMOD.Studio.EventInstance playerState;
     void Start()
     {
-        //--------------------------------------------------------------------
-        // 4: This shows how to create an instance of an Event and manually 
-        //    start it.
-        //--------------------------------------------------------------------
         FMOD.Studio.EventInstance playerState = FMODUnity.RuntimeManager.CreateInstance(PlayerStateEvent);
         playerState.start();
-        Debug.Log( "start");
+        //Debug.Log( "start");
 
         m_notes_controller.set_start( true );
 

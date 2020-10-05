@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{d506b65c-69da-4b64-8334-cb79ac9c3d8f}">
+		<property name="assetPath">
+			<value>20201002 track B r3.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>105.19510204081632</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1ab81799-7d47-4f42-8955-2077b5f4b3d3}</destination>
+		</relationship>
+	</object>
+</objects>
