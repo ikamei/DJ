@@ -9,7 +9,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+// using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class CreditsPageUI : MonoBehaviour
@@ -20,10 +20,10 @@ public class CreditsPageUI : MonoBehaviour
     void Start()
     {
         Button btn = m_return_button.GetComponent<Button>();
-        btn.onClick.AddListener( onReturnButtonClick );
+        btn.onClick.AddListener( on_return_button_click );
     }
 
-    void onReturnButtonClick()
+    void on_return_button_click()
     {
         m_scene_switcher.m_scene_name = "StartScene";
         StartCoroutine(m_scene_switcher.LoadYourAsyncScene());

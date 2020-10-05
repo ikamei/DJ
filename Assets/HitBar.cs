@@ -23,12 +23,15 @@ public enum SwitchKey
 
 public class HitBar : MonoBehaviour
 {
-    public ScoreCenter m_score_center = null;
+    //public ScoreCenter m_score_center = null;
     //Dictionary<MyNote,int> m_notes;
     List<MyNote> m_single_notes = new List<MyNote>();
     List<MyNote> m_push_notes = new List<MyNote>();
     List<MyNote> m_release_notes = new List<MyNote>();
     List<MyNote> m_keypressed_notes = new List<MyNote>();
+
+    public ScoreUI m_score_ui = null;
+    public ScoreUI m_combo_hit_ui = null;
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -91,7 +94,7 @@ public class HitBar : MonoBehaviour
         }
         else
         {
-            m_score_center.clear_combo_hit_count();
+            ScoreCenter.instance().clear_combo_hit_count();
         }
     }    
 
@@ -101,8 +104,11 @@ public class HitBar : MonoBehaviour
         Debug.Log( "on_hit_note : " + (score++) );
         // animation
         // add score
-        m_score_center.add_score(1);
-        m_score_center.add_combo_hit_count(1);
+        ScoreCenter.instance().add_score(1);
+        m_score_ui.set_score( ScoreCenter.instance().Score );
+
+        ScoreCenter.instance().add_combo_hit_count(1);
+        m_combo_hit_ui.set_score( ScoreCenter.instance().ComboHitCount );
         // destroy gameobject
         Destroy( mynote.gameObject );
         mynote.m_note.m_gameobject = null;
