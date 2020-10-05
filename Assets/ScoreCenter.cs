@@ -15,6 +15,7 @@ using UnityEngine.SceneManagement;
 public class ScoreCenter : MonoBehaviour
 {
     public ScoreUI m_score_ui = null;
+    public ScoreUI m_combo_hit_ui = null;
     int m_score = 0;
     public int Score
     {
@@ -42,10 +43,12 @@ public class ScoreCenter : MonoBehaviour
     public void clear_combo_hit_count()
     {
         m_combo_hit_count = 0;
+        m_combo_hit_ui.set_score( m_combo_hit_count );
     }
 
     public void add_combo_hit_count( int delta )
     {
         m_combo_hit_count += delta;
+        m_combo_hit_ui.set_score( m_combo_hit_count );
     }
 }
