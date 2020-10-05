@@ -33,6 +33,15 @@ public class HitBar : MonoBehaviour
     public ScoreUI m_score_ui = null;
     public ScoreUI m_combo_hit_ui = null;
 
+    Animator m_animator = null;
+    SpriteRenderer m_sprite_renderer = null;
+
+    void Start()
+    {
+        m_animator = gameObject.GetComponent<Animator>();
+        m_sprite_renderer = gameObject.GetComponent<SpriteRenderer>();
+    }
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if( !col.gameObject.CompareTag("Note") )
@@ -60,13 +69,8 @@ public class HitBar : MonoBehaviour
         //Debug.Log(col.gameObject.name );// + " : " + gameObject.name + " : " + Time.time);
     }    
 
-    void OnTriggerExit2D(Collider2D col)
+    void remove_mynote( MyNote mynote )
     {
-        if( !col.gameObject.CompareTag("Note") )
-        {
-            return;
-        }
-        MyNote mynote = col.gameObject.GetComponent<MyNote>();
         bool is_skip = false;
         if( !is_skip )
         {
@@ -87,20 +91,27 @@ public class HitBar : MonoBehaviour
         {
             is_skip = m_keypressed_notes.Remove( mynote );
         }
-
-        if( mynote.m_is_hit )
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if( !col.gameObject.CompareTag("Note") )
         {
-            on_hit_note(mynote);
+            return;
         }
-        else
+        MyNote mynote = col.gameObject.GetComponent<MyNote>();
+        remove_mynote( mynote );
+
+        if( !mynote.m_is_hit )
         {
             ScoreCenter.instance().clear_combo_hit_count();
+            // on_hit_note(mynote);
         }
     }    
 
-    int score = 0;
+    // int score = 0;
     void on_hit_note( MyNote mynote )
     {
+        remove_mynote( mynote );
         // Debug.Log( "on_hit_note : " + (score++) );
         // animation
         // add score
@@ -112,10 +123,40 @@ public class HitBar : MonoBehaviour
         // destroy gameobject
         Destroy( mynote.gameObject );
         mynote.m_note.m_gameobject = null;
+        m_sprite_index = 0;
+        // if( null != m_animator )
+        // {
+        //     m_animator.SetInteger( "action_state", MyConst.ACTION_STATE_HIT );
+        // }
+    }
+
+    public Sprite[] m_hit_sprites;
+    int m_sprite_index = 0;
+    float m_delta_time = 0;
+
+    void check_sprite()
+    {
+        if( null != m_sprite_renderer )
+        {
+            m_delta_time += Time.deltaTime;
+            if( m_delta_time > 1/15.0f )
+            {
+                m_delta_time = 0;            
+                if( m_sprite_index < m_hit_sprites.Length-1 )
+                {
+                    m_sprite_index++;
+                    // Debug.Log( "" + m_sprite_index + ", " + m_delta_time );
+                    m_sprite_renderer.sprite = m_hit_sprites[m_sprite_index];
+                    // m_sprite_renderer.sprite = Resources.Load<Sprite>( "bar_25fps/bar2" );
+                }
+            }
+            
+        }
     }
 
     void Update()
     {
+        check_sprite();
         if( Input.GetKeyDown("space") )
         {
             on_key_down();
@@ -146,6 +187,7 @@ public class HitBar : MonoBehaviour
 
     void on_key_down()
     {
+        List<MyNote> temp_notes = new List<MyNote>();
         SwitchKey key = get_switch_key();
         for( int j=0; j<m_push_notes.Count; ++j )
         {
@@ -153,6 +195,7 @@ public class HitBar : MonoBehaviour
                 (NoteSide.NoteSide_Right == m_push_notes[j].m_note.m_side && SwitchKey.Right == key) )
             {
                 m_push_notes[j].m_is_hit = true;
+                temp_notes.Add(m_push_notes[j]);
             }
         }
 
@@ -162,12 +205,19 @@ public class HitBar : MonoBehaviour
                 (NoteSide.NoteSide_Right == m_single_notes[j].m_note.m_side && SwitchKey.Right == key) )
             {
                 m_single_notes[j].m_is_hit = true;
+                temp_notes.Add(m_single_notes[j]);
             }
+        }
+
+        for( int j=0; j<temp_notes.Count; ++j )
+        {
+            on_hit_note( temp_notes[j] );
         }
     }
 
     void on_key_hold_down()
     {
+        List<MyNote> temp_notes = new List<MyNote>();
         SwitchKey key = get_switch_key();
         for( int j=0; j<m_keypressed_notes.Count; ++j )
         {
@@ -175,12 +225,19 @@ public class HitBar : MonoBehaviour
                 (NoteSide.NoteSide_Right == m_keypressed_notes[j].m_note.m_side && SwitchKey.Right == key) )
             {
                 m_keypressed_notes[j].m_is_hit = true;
+                temp_notes.Add(m_keypressed_notes[j]);
             }
+        }
+
+        for( int j=0; j<temp_notes.Count; ++j )
+        {
+            on_hit_note( temp_notes[j] );
         }
     }
 
     void on_key_up()
     {
+        List<MyNote> temp_notes = new List<MyNote>();
         SwitchKey key = get_switch_key();
         for( int j=0; j<m_release_notes.Count; ++j )
         {
@@ -188,6 +245,7 @@ public class HitBar : MonoBehaviour
                 (NoteSide.NoteSide_Right == m_release_notes[j].m_note.m_side && SwitchKey.Right == key) )
             {
                 m_release_notes[j].m_is_hit = true;
+                temp_notes.Add(m_release_notes[j]);
             }
         }
 
@@ -197,9 +255,22 @@ public class HitBar : MonoBehaviour
                 (NoteSide.NoteSide_Right == m_single_notes[j].m_note.m_side && SwitchKey.Right == key) )
             {
                 m_single_notes[j].m_is_hit = true;
+                temp_notes.Add(m_single_notes[j]);
             }
         }
 
+        for( int j=0; j<temp_notes.Count; ++j )
+        {
+            on_hit_note( temp_notes[j] );
+        }
     }
 
+    void on_hit_animation_finished()
+    {
+        // if( null != m_animator )
+        // {
+        //     m_animator.SetInteger( "action_state", MyConst.ACTION_STATE_NORMAL );
+        // }
+        // Debug.Log( "hit animation finished!" );
+    }
 }
