@@ -449,7 +449,7 @@ public class NotesGenerator// : MonoBehaviour
             int length = items[j+1];
             NoteSide side = (NoteSide)(items[j+2]);
 
-            if( 1==length )
+            if( 2==length )
             {
                 Note note = create_single_note(index, length, side );
                 cache_note( index, side, note );

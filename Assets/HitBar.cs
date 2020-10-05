@@ -140,6 +140,17 @@ public class HitBar : MonoBehaviour
                 m_push_notes[j].m_is_hit = true;
             }
         }
+
+        for( int j=0; j<m_single_notes.Count; ++j )
+        {
+            if( (NoteSide.NoteSide_Left  == m_single_notes[j].m_note.m_side && SwitchKey.Left == key) ||
+                (NoteSide.NoteSide_Right == m_single_notes[j].m_note.m_side && SwitchKey.Right == key) )
+            {
+                m_single_notes[j].m_is_hit = true;
+            }
+        }
+
+
     }
 
     void on_key_hold_down()
@@ -166,6 +177,16 @@ public class HitBar : MonoBehaviour
                 m_release_notes[j].m_is_hit = true;
             }
         }
+
+        for( int j=0; j<m_single_notes.Count; ++j )
+        {
+            if( (NoteSide.NoteSide_Left ==  m_single_notes[j].m_note.m_side && SwitchKey.Left == key) ||
+                (NoteSide.NoteSide_Right == m_single_notes[j].m_note.m_side && SwitchKey.Right == key) )
+            {
+                m_single_notes[j].m_is_hit = true;
+            }
+        }
+
     }
 
 }

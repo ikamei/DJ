@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7583316486571887109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/20201002 track A r4
+  m_EditorClassIdentifier: 
+  Path: event:/20201002 track A r4
+  guid: 54a1eb9909687e42922017f8e0cdf8d7
+  Banks:
+  - {fileID: -4418558860879240776}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 118804
 --- !u!114 &-4541729552261888683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,7 +38,7 @@ MonoBehaviour:
   Path: event:/20201002 track A r3
   guid: c5b6c2740e8858488085c3805c1959af
   Banks:
-  - {fileID: 4355577451967261575}
+  - {fileID: -4418558860879240776}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -37,11 +60,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: DJ/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637374853650000000
+  lastModified: 637374926880000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 914
+    Value: 946
+  Exists: 1
+--- !u!114 &-4418558860879240776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: DJ/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637374926860000000
+  LoadResult: 0
+  FileSizes: []
   Exists: 1
 --- !u!114 &-1010690799639447470
 MonoBehaviour:
@@ -58,7 +99,7 @@ MonoBehaviour:
   Path: event:/20201002 track B r1
   guid: de750640c40d9f429b47a1b7b306e4ca
   Banks:
-  - {fileID: 4355577451967261575}
+  - {fileID: -4418558860879240776}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -80,19 +121,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -4440829910518093608}
-  - {fileID: 4355577451967261575}
+  - {fileID: -4418558860879240776}
   EditorEvents:
   - {fileID: 7550235619640960106}
   - {fileID: 1964430567065112051}
   - {fileID: -1010690799639447470}
   - {fileID: -4541729552261888683}
   - {fileID: 1780678980620712311}
+  - {fileID: -7583316486571887109}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 4355577451967261575}
+  - {fileID: -4418558860879240776}
   StringsBanks:
   - {fileID: -4440829910518093608}
-  stringsBankWriteTime: 637374853650000000
+  stringsBankWriteTime: 637374926880000000
   cacheVersion: 3
 --- !u!114 &1780678980620712311
 MonoBehaviour:
@@ -109,7 +151,7 @@ MonoBehaviour:
   Path: event:/20201002 track B r3
   guid: f017693b8b77d044bd09dcbbd6a4471c
   Banks:
-  - {fileID: 4355577451967261575}
+  - {fileID: -4418558860879240776}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -132,7 +174,7 @@ MonoBehaviour:
   Path: event:/20201002 track A r2
   guid: 3976a7c3346758489ab0a73705c1233a
   Banks:
-  - {fileID: 4355577451967261575}
+  - {fileID: -4418558860879240776}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -175,7 +217,7 @@ MonoBehaviour:
   lastModified: 637374853630000000
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &7550235619640960106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +233,7 @@ MonoBehaviour:
   Path: event:/20201002 track B r2 DJ
   guid: 27504123bc07a74eb0f6b8949b4e47df
   Banks:
-  - {fileID: 4355577451967261575}
+  - {fileID: -4418558860879240776}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
