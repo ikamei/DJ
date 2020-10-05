@@ -476,7 +476,8 @@ public class NotesGenerator// : MonoBehaviour
         }
         else
         {
-            note.m_disappear_beat_index = index + m_span_of_disappear_beat_count;
+            // note.m_disappear_beat_index = index + m_span_of_disappear_beat_count;
+            note.m_disappear_beat_index = index + m_span_of_disappear_beat_count / 5;
             // Debug.Log( "create_single_note : index : " + index + ", m_span_of_disappear_beat_count : " + m_span_of_disappear_beat_count + ", note.m_disappear_beat_index : " + note.m_disappear_beat_index );
             // if( note.m_disappear_beat_index >= m_left_appear_note_indices.Count )
             // {
