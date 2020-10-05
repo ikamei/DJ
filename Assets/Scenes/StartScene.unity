@@ -519,7 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_start_button: {fileID: 535908062}
   m_credits_button: {fileID: 1973385509}
-  m_exit_button: {fileID: 1973385509}
+  m_exit_button: {fileID: 1359874824}
   m_scene_switcher: {fileID: 845526935}
 --- !u!4 &845526934
 Transform:
