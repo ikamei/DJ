@@ -44,10 +44,17 @@ public class NewNotesController : MonoBehaviour
 
     public Vector3 m_left_start_position = new Vector3(0,0,0);
     public Vector3 m_right_start_position = new Vector3(0,0,0);
-
+    public bool m_is_second_level = false;
     void Start()
     {
-        m_notes_generator = new NotesGenerator( m_beats_per_second, m_span_of_disappear_seconds );
+        if( false == m_is_second_level )
+        {
+            m_notes_generator = new NotesGenerator( m_beats_per_second, m_span_of_disappear_seconds );
+        }
+        else
+        {
+            m_notes_generator = new NotesGeneratorB( m_beats_per_second, m_span_of_disappear_seconds );
+        }
     }
 
     // void Awake()

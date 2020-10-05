@@ -23,6 +23,7 @@ class MyGameController : MonoBehaviour
     public GameObject m_return_button = null;
     public SceneSwitcher m_scene_switcher = null;
 
+    public string m_end_scene_name = "";
     void Start()
     {
         m_player_state = FMODUnity.RuntimeManager.CreateInstance(m_player_state_event);
@@ -46,7 +47,6 @@ class MyGameController : MonoBehaviour
         StartCoroutine(m_scene_switcher.LoadYourAsyncScene());
     }
 
-
     void Update()
     {
         if (m_player_state.isValid())
@@ -58,7 +58,7 @@ class MyGameController : MonoBehaviour
                 m_player_state.release();
                 m_player_state.clearHandle();
 
-                m_scene_switcher.m_scene_name = "EndScene";
+                m_scene_switcher.m_scene_name = m_end_scene_name;//"EndScene";
                 StartCoroutine(m_scene_switcher.LoadYourAsyncScene());
             }
         }

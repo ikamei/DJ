@@ -105,7 +105,7 @@ public class NotesGenerator// : MonoBehaviour
         }
     }
 
-    void generate_notes()
+    public virtual void generate_notes()
     {
         generate_section_1();
         generate_section_2();
@@ -409,7 +409,7 @@ public class NotesGenerator// : MonoBehaviour
         generate_notes( items );
     }
 
-    void resize_cached_notes(int[] items)
+    protected void resize_cached_notes(int[] items)
     {
         int new_size = items[items.Length-3] + items[items.Length-2] + m_span_of_disappear_beat_count;
         for( int j=m_left_notes.Count; j<new_size; ++j )
@@ -441,7 +441,7 @@ public class NotesGenerator// : MonoBehaviour
     }
 
 
-    void generate_notes( int[] items )
+    protected void generate_notes( int[] items )
     {
         for( int j=0; j<items.Length; j+=3 )
         {

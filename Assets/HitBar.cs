@@ -101,7 +101,7 @@ public class HitBar : MonoBehaviour
     int score = 0;
     void on_hit_note( MyNote mynote )
     {
-        Debug.Log( "on_hit_note : " + (score++) );
+        // Debug.Log( "on_hit_note : " + (score++) );
         // animation
         // add score
         ScoreCenter.instance().add_score(1);
