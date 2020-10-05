@@ -23,6 +23,7 @@ public enum SwitchKey
 
 public class HitBar : MonoBehaviour
 {
+    public ScoreCenter m_score_center = null;
     //Dictionary<MyNote,int> m_notes;
     List<MyNote> m_single_notes = new List<MyNote>();
     List<MyNote> m_push_notes = new List<MyNote>();
@@ -88,6 +89,10 @@ public class HitBar : MonoBehaviour
         {
             on_hit_note(mynote);
         }
+        else
+        {
+            m_score_center.clear_combo_hit_count();
+        }
     }    
 
     int score = 0;
@@ -96,6 +101,8 @@ public class HitBar : MonoBehaviour
         Debug.Log( "on_hit_note : " + (score++) );
         // animation
         // add score
+        m_score_center.add_score(1);
+        m_score_center.add_combo_hit_count(1);
         // destroy gameobject
         Destroy( mynote.gameObject );
         mynote.m_note.m_gameobject = null;
