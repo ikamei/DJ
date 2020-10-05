@@ -8,8 +8,8 @@
 
 public class MyConst
 {
-    public int ACTION_STATE_NORMAL = 0; 
-    public int ACTION_STATE_PUSH   = 1;
+    public const int ACTION_STATE_NORMAL = 0; 
+    public const int ACTION_STATE_PUSH   = 1;
 
     public const int LAYER_HITBAR  = 8;
     public const int LAYER_NOTE    = 9;

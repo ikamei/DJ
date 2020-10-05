@@ -13,6 +13,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
+public enum SwitchKey
+{
+    None,
+    Left,
+    Right,
+}
+
+
 public class HitBar : MonoBehaviour
 {
     //Dictionary<MyNote,int> m_notes;
@@ -109,14 +117,7 @@ public class HitBar : MonoBehaviour
         }
     }
 
-    enum SwitchKey
-    {
-        None,
-        Left,
-        Right,
-    }
-
-    SwitchKey get_switch_key()
+    public SwitchKey get_switch_key()
     {
         SwitchKey key = SwitchKey.None;
         if( Input.GetKey(KeyCode.LeftArrow) )
@@ -129,6 +130,7 @@ public class HitBar : MonoBehaviour
         }
         return key;
     }
+
     void on_key_down()
     {
         SwitchKey key = get_switch_key();
@@ -149,8 +151,6 @@ public class HitBar : MonoBehaviour
                 m_single_notes[j].m_is_hit = true;
             }
         }
-
-
     }
 
     void on_key_hold_down()

@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 803221333}
   - component: {fileID: 803221332}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494458b1503524ffd989ddd31f952dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerStateEvent: event:/20201002 track A r3
+  PlayerStateEvent: event:/20201002 track A r4
   m_notes_controller: {fileID: 108898012}
 --- !u!4 &803221333
 Transform:
@@ -914,6 +914,7 @@ GameObject:
   - component: {fileID: 1294611733}
   - component: {fileID: 1294611737}
   - component: {fileID: 1294611738}
+  - component: {fileID: 1294611739}
   m_Layer: 8
   m_Name: HitBar
   m_TagString: Untagged
@@ -1063,6 +1064,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc2a19ea25084b0c9e4a66c91c12443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1294611739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294611732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5722c2c12c47c4aeb9d35a9c3bfec0e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_left_shadow: {fileID: 1716607878}
+  m_right_shadow: {fileID: 1110708588}
+  m_left_disk_animator: {fileID: 950167178}
+  m_right_disk_animator: {fileID: 1855435580}
 --- !u!1 &1566365688
 GameObject:
   m_ObjectHideFlags: 0
